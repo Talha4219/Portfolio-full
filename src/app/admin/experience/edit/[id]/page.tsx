@@ -12,8 +12,6 @@ export default async function EditExperiencePage({ params }: { params: { id: str
     notFound();
   }
 
-  const plainEntry = JSON.parse(JSON.stringify(entry));
-
   return (
     <div>
         <h1 className="text-3xl font-bold tracking-tight mb-6">Edit Experience Entry</h1>
@@ -22,7 +20,7 @@ export default async function EditExperiencePage({ params }: { params: { id: str
                 <CardTitle>Entry Details</CardTitle>
             </CardHeader>
             <CardContent>
-                <ExperienceForm entry={plainEntry} />
+                <ExperienceForm entry={entry} />
             </CardContent>
         </Card>
     </div>

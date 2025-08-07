@@ -16,8 +16,7 @@ export default function AdminMessagesPage() {
   useEffect(() => {
     async function fetchMessages() {
       const fetchedMessages = await getMessages();
-      const plainMessages = JSON.parse(JSON.stringify(fetchedMessages));
-      setMessages(plainMessages);
+      setMessages(fetchedMessages);
     }
     fetchMessages();
   }, []);
@@ -32,8 +31,7 @@ export default function AdminMessagesPage() {
     setSelectedMessage(null);
     // Re-fetch messages to get updated read status
      getMessages().then(fetchedMessages => {
-        const plainMessages = JSON.parse(JSON.stringify(fetchedMessages));
-        setMessages(plainMessages);
+        setMessages(fetchedMessages);
      });
   };
 

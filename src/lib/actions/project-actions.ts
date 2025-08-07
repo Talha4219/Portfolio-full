@@ -1,28 +1,29 @@
 
 'use server';
 
+import { cache } from 'react';
 import dbConnect from '@/lib/db';
 import ProjectModel, { type IProject } from '@/models/Project';
 import { revalidatePath } from 'next/cache';
 
-export async function getProjects() {
+export const getProjects = cache(async () => {
     await dbConnect();
     // Sort by featured status first (descending), then by creation date (descending)
     const projects = await ProjectModel.find({}).sort({ featured: -1, createdAt: -1 });
-    return projects;
-}
+    return JSON.parse(JSON.stringify(projects));
+});
 
-export async function getProjectById(id: string) {
+export const getProjectById = cache(async (id: string) => {
     await dbConnect();
     const project = await ProjectModel.findById(id);
-    return project;
-}
+    return JSON.parse(JSON.stringify(project));
+});
 
-export async function getProjectBySlug(slug: string) {
+export const getProjectBySlug = cache(async (slug: string) => {
     await dbConnect();
     const project = await ProjectModel.findOne({ slug });
-    return project;
-}
+    return JSON.parse(JSON.stringify(project));
+});
 
 export async function createProject(projectData: Partial<IProject>) {
     await dbConnect();

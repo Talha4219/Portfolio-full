@@ -9,7 +9,6 @@ import { getProjects } from '@/lib/actions/project-actions';
 
 export default async function AdminProjectsPage() {
   const projects = await getProjects();
-  const plainProjects = JSON.parse(JSON.stringify(projects));
 
   return (
     <div>
@@ -28,7 +27,7 @@ export default async function AdminProjectsPage() {
           <CardTitle>Your Projects</CardTitle>
         </CardHeader>
         <CardContent>
-          <ProjectsDataTable data={plainProjects} />
+          <ProjectsDataTable data={projects} />
         </CardContent>
       </Card>
     </div>

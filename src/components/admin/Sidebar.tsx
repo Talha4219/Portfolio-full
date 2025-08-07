@@ -37,7 +37,7 @@ export default function AdminSidebar() {
 
   const navContent = (
       <div className="flex flex-col h-full">
-        <div className="flex-1 space-y-2">
+        <div className="flex-1 space-y-2 p-4">
         {navLinks.map(({ href, label, icon }) => (
             <Link
             key={href}
@@ -52,7 +52,7 @@ export default function AdminSidebar() {
             </Link>
         ))}
         </div>
-        <div className="mt-auto space-y-2">
+        <div className="mt-auto space-y-2 p-4">
             <Separator />
             <Link
                 href="/"
@@ -71,13 +71,13 @@ export default function AdminSidebar() {
 
   return (
     <>
-    <div className="hidden border-r bg-muted/40 md:block w-64 p-4">
-      <div className="mb-6">
+    <div className="hidden border-r bg-muted/40 md:block w-64">
+      <div className="py-4 mb-2 border-b">
         <Logo />
       </div>
       {navContent}
     </div>
-    <div className="md:hidden p-2">
+    <div className="md:hidden p-2 border-b sticky top-0 bg-background/95 z-40">
          <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -85,8 +85,8 @@ export default function AdminSidebar() {
                 <span className="sr-only">Toggle Menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="p-4">
-              <div className="mb-6">
+            <SheetContent side="left" className="p-0">
+              <div className="py-4 mb-2 border-b">
                 <Logo />
               </div>
               <Separator />

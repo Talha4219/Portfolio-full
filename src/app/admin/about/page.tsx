@@ -7,11 +7,6 @@ import AboutForm from './AboutForm';
 export default async function AdminAboutPage() {
   const aboutInfo = await getAbout();
 
-  // Ensure a plain, serializable object is passed to the client component
-  const plainAboutInfo = aboutInfo 
-    ? JSON.parse(JSON.stringify(aboutInfo)) 
-    : null;
-
   return (
     <div>
       <div className="mb-6">
@@ -25,7 +20,7 @@ export default async function AdminAboutPage() {
            <CardDescription>This information will be displayed on your public "About Me" page.</CardDescription>
         </CardHeader>
         <CardContent>
-          <AboutForm data={plainAboutInfo} />
+          <AboutForm data={aboutInfo} />
         </CardContent>
       </Card>
     </div>

@@ -11,8 +11,6 @@ export default async function EditEducationPage({ params }: { params: { id: stri
   if (!entry) {
     notFound();
   }
-  
-  const plainEntry = JSON.parse(JSON.stringify(entry));
 
   return (
     <div>
@@ -22,7 +20,7 @@ export default async function EditEducationPage({ params }: { params: { id: stri
                 <CardTitle>Entry Details</CardTitle>
             </CardHeader>
             <CardContent>
-                <EducationForm entry={plainEntry} />
+                <EducationForm entry={entry} />
             </CardContent>
         </Card>
     </div>

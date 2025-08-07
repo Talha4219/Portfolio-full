@@ -7,11 +7,10 @@ import SkillsList from './SkillsList';
 
 export default async function AdminSkillsPage() {
     const skills = await getSkills();
-    const plainSkills = JSON.parse(JSON.stringify(skills));
     
-    const frontendSkills = plainSkills.filter(s => s.category === 'frontend');
-    const backendSkills = plainSkills.filter(s => s.category === 'backend');
-    const otherSkills = plainSkills.filter(s => s.category === 'others');
+    const frontendSkills = skills.filter(s => s.category === 'frontend');
+    const backendSkills = skills.filter(s => s.category === 'backend');
+    const otherSkills = skills.filter(s => s.category === 'others');
 
   return (
     <div>

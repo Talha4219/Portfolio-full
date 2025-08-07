@@ -71,8 +71,8 @@ export default async function Home() {
   return (
     <div className="container mx-auto px-4 py-12 md:py-20">
       {/* Hero Section */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center animate-fade-in-up">
-        <div className="text-left">
+      <section className="flex flex-col-reverse md:flex-row gap-12 items-center animate-fade-in-up">
+        <div className="text-center md:text-left">
             <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
               Hi, I am <span className="text-primary">{about?.name || 'Your Name'}</span>
             </h1>
@@ -82,7 +82,6 @@ export default async function Home() {
                 words={[
                   "Full Stack Developer",
                   "MERN Stack Specialist",
-                  "AI Enthusiast",
                   "Building modern web apps",
                   "Exploring the power of AI",
                   "Turning ideas into products"
@@ -92,7 +91,7 @@ export default async function Home() {
             <p className="mt-4 max-w-xl text-base text-muted-foreground md:text-lg">
               I am a motivated and versatile individual, always eager to take on new challenges. With a passion for learning I am dedicated to delivering high-quality results. With a positive attitude and a growth mindset, I am ready to make a meaningful contribution and achieve great things.
             </p>
-            <div className="mt-10 flex flex-wrap gap-4">
+            <div className="mt-10 flex flex-wrap gap-4 justify-center md:justify-start">
               <Button asChild size="lg">
                 <Link href="#projects">
                   View Projects
@@ -106,7 +105,7 @@ export default async function Home() {
               </Button>
             </div>
         </div>
-        <div className="hidden md:block">
+        <div className="mt-8 md:mt-0">
             <Image
                 src={about?.heroImage || "https://placehold.co/600x600.png"}
                 alt="Hero Image"
@@ -187,28 +186,26 @@ export default async function Home() {
             Work <span className="text-primary">Experience</span>
         </h2>
         <div className="relative max-w-3xl mx-auto">
-            <div className="absolute left-1/2 -translate-x-1/2 w-0.5 h-full bg-border/40" aria-hidden="true"></div>
+            <div className="absolute left-4 w-0.5 h-full bg-border/40" aria-hidden="true"></div>
             <div className="space-y-12">
                 {experiences.map((exp, index) => (
                     <div key={index} className="relative flex items-start group">
-                         <div className="absolute left-1/2 -translate-x-1/2 mt-1.5 w-3 h-3 rounded-full bg-primary border-2 border-background group-hover:scale-110 transition-transform"></div>
-                         <div className={`w-1/2 pr-8 text-right ${index % 2 === 0 ? 'order-1' : 'order-2'}`}>
-                             <p className="font-medium text-muted-foreground">{exp.startDate} - {exp.endDate}</p>
-                         </div>
-                         <div className={`w-1/2 pl-8 ${index % 2 === 0 ? 'order-2' : 'order-1'}`}>
-                             <Card className="bg-card/50 hover:bg-card border-border/30 hover:border-primary/50 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10">
-                                 <CardHeader>
-                                     <CardTitle className="text-xl font-headline flex items-center gap-2">
-                                         {exp.logo ? <Image src={exp.logo} alt={`${exp.company} logo`} width={20} height={20} className="h-5 w-5 object-contain" /> : <Briefcase className="inline-block h-5 w-5 text-primary" />}
-                                         {exp.role}
-                                     </CardTitle>
-                                     <p className="text-sm text-muted-foreground">{exp.company}</p>
-                                 </CardHeader>
-                                 <CardContent>
-                                     <p className="text-sm text-muted-foreground">{exp.description}</p>
-                                 </CardContent>
-                             </Card>
-                         </div>
+                        <div className="absolute left-4 -translate-x-1/2 mt-1.5 w-3 h-3 rounded-full bg-primary border-2 border-background group-hover:scale-110 transition-transform"></div>
+                        <div className="w-full ml-10">
+                            <p className="font-medium text-muted-foreground mb-1">{exp.startDate} - {exp.endDate}</p>
+                            <Card className="bg-card/50 hover:bg-card border-border/30 hover:border-primary/50 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10">
+                                <CardHeader>
+                                    <CardTitle className="text-xl font-headline flex items-center gap-2">
+                                        {exp.logo ? <Image src={exp.logo} alt={`${exp.company} logo`} width={20} height={20} className="h-5 w-5 object-contain" /> : <Briefcase className="inline-block h-5 w-5 text-primary" />}
+                                        {exp.role}
+                                    </CardTitle>
+                                    <p className="text-sm text-muted-foreground">{exp.company}</p>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="text-sm text-muted-foreground">{exp.description}</p>
+                                </CardContent>
+                            </Card>
+                        </div>
                     </div>
                 ))}
             </div>
@@ -236,28 +233,26 @@ export default async function Home() {
             My <span className="text-primary">Education</span>
         </h2>
         <div className="relative max-w-3xl mx-auto">
-            <div className="absolute left-1/2 -translate-x-1/2 w-0.5 h-full bg-border/40" aria-hidden="true"></div>
+            <div className="absolute left-4 w-0.5 h-full bg-border/40" aria-hidden="true"></div>
             <div className="space-y-12">
                 {educations.map((edu, index) => (
                     <div key={index} className="relative flex items-start group">
-                         <div className="absolute left-1/2 -translate-x-1/2 mt-1.5 w-3 h-3 rounded-full bg-primary border-2 border-background group-hover:scale-110 transition-transform"></div>
-                         <div className={`w-1/2 pr-8 text-right ${index % 2 === 0 ? 'order-1' : 'order-2'}`}>
-                             <p className="font-medium text-muted-foreground">{edu.startDate} - {edu.endDate}</p>
-                         </div>
-                         <div className={`w-1/2 pl-8 ${index % 2 === 0 ? 'order-2' : 'order-1'}`}>
-                             <Card className="bg-card/50 hover:bg-card border-border/30 hover:border-primary/50 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10">
-                                 <CardHeader>
-                                     <CardTitle className="text-xl font-headline flex items-center gap-2">
-                                         {edu.logo ? <Image src={edu.logo} alt={`${edu.school} logo`} width={20} height={20} className="h-5 w-5 object-contain" /> : <GraduationCap className="inline-block h-5 w-5 text-primary" />}
-                                         {edu.degree}
-                                     </CardTitle>
-                                     <p className="text-sm text-muted-foreground">{edu.school}</p>
-                                 </CardHeader>
-                                 <CardContent>
-                                     <p className="text-sm text-muted-foreground">{edu.description}</p>
-                                 </CardContent>
-                             </Card>
-                         </div>
+                        <div className="absolute left-4 -translate-x-1/2 mt-1.5 w-3 h-3 rounded-full bg-primary border-2 border-background group-hover:scale-110 transition-transform"></div>
+                        <div className="w-full ml-10">
+                            <p className="font-medium text-muted-foreground mb-1">{edu.startDate} - {edu.endDate}</p>
+                            <Card className="bg-card/50 hover:bg-card border-border/30 hover:border-primary/50 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10">
+                                <CardHeader>
+                                    <CardTitle className="text-xl font-headline flex items-center gap-2">
+                                        {edu.logo ? <Image src={edu.logo} alt={`${edu.school} logo`} width={20} height={20} className="h-5 w-5 object-contain" /> : <GraduationCap className="inline-block h-5 w-5 text-primary" />}
+                                        {edu.degree}
+                                    </CardTitle>
+                                    <p className="text-sm text-muted-foreground">{edu.school}</p>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="text-sm text-muted-foreground">{edu.description}</p>
+                                </CardContent>
+                            </Card>
+                        </div>
                     </div>
                 ))}
             </div>

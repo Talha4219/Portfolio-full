@@ -1,21 +1,22 @@
 
 'use server';
 
+import { cache } from 'react';
 import dbConnect from '@/lib/db';
 import ExperienceModel, { type IExperience } from '@/models/Experience';
 import { revalidatePath } from 'next/cache';
 
-export async function getExperienceEntries() {
+export const getExperienceEntries = cache(async () => {
     await dbConnect();
     const entries = await ExperienceModel.find({}).sort({ endDate: -1 });
-    return entries;
-}
+    return JSON.parse(JSON.stringify(entries));
+});
 
-export async function getExperienceById(id: string) {
+export const getExperienceById = cache(async (id: string) => {
     await dbConnect();
     const entry = await ExperienceModel.findById(id);
-    return entry;
-}
+    return JSON.parse(JSON.stringify(entry));
+});
 
 export async function createExperience(experienceData: IExperience) {
     await dbConnect();

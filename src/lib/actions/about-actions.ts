@@ -1,16 +1,17 @@
 
 'use server';
 
+import { cache } from 'react';
 import dbConnect from '@/lib/db';
 import AboutModel, { type IAbout } from '@/models/About';
 import { revalidatePath } from 'next/cache';
 
-export async function getAbout() {
+export const getAbout = cache(async () => {
     await dbConnect();
     // There should only ever be one document in this collection
     const aboutInfo = await AboutModel.findOne();
-    return aboutInfo;
-}
+    return JSON.parse(JSON.stringify(aboutInfo));
+});
 
 export async function updateAbout(aboutData: Partial<IAbout>) {
     await dbConnect();

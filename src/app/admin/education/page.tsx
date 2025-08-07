@@ -9,7 +9,6 @@ import { getEducationEntries } from '@/lib/actions/education-actions';
 
 export default async function AdminEducationPage() {
   const entries = await getEducationEntries();
-  const plainEntries = JSON.parse(JSON.stringify(entries));
 
   return (
     <div>
@@ -28,7 +27,7 @@ export default async function AdminEducationPage() {
           <CardTitle>Your Education History</CardTitle>
         </CardHeader>
         <CardContent>
-          <EducationDataTable data={plainEntries} />
+          <EducationDataTable data={entries} />
         </CardContent>
       </Card>
     </div>

@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import ProjectForm from '../../ProjectForm';
 import { getProjectById } from '@/lib/actions/project-actions';
@@ -11,8 +12,6 @@ export default async function EditProjectPage({ params }: { params: { id: string
     notFound();
   }
 
-  const plainProject = JSON.parse(JSON.stringify(project));
-
   return (
     <div>
         <h1 className="text-3xl font-bold tracking-tight mb-6">Edit Project</h1>
@@ -21,7 +20,7 @@ export default async function EditProjectPage({ params }: { params: { id: string
                 <CardTitle>Project Details</CardTitle>
             </CardHeader>
             <CardContent>
-                <ProjectForm project={plainProject} />
+                <ProjectForm project={project} />
             </CardContent>
         </Card>
     </div>

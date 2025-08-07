@@ -9,7 +9,6 @@ import { getExperienceEntries } from '@/lib/actions/experience-actions';
 
 export default async function AdminExperiencePage() {
   const entries = await getExperienceEntries();
-  const plainEntries = JSON.parse(JSON.stringify(entries));
 
   return (
     <div>
@@ -28,7 +27,7 @@ export default async function AdminExperiencePage() {
           <CardTitle>Your Work History</CardTitle>
         </CardHeader>
         <CardContent>
-          <ExperienceDataTable data={plainEntries} />
+          <ExperienceDataTable data={entries} />
         </CardContent>
       </Card>
     </div>

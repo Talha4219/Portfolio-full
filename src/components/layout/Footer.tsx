@@ -3,7 +3,7 @@ import { Github, Linkedin, Instagram } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Footer() {
-  const name = 'Your Name';
+  const name = 'Talha Shams';
 
   const footerLinks = [
     { href: '/about', label: 'About' },

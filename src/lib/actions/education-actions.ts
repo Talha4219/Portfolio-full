@@ -1,21 +1,22 @@
 
 'use server';
 
+import { cache } from 'react';
 import dbConnect from '@/lib/db';
 import EducationModel, { type IEducation } from '@/models/Education';
 import { revalidatePath } from 'next/cache';
 
-export async function getEducationEntries() {
+export const getEducationEntries = cache(async () => {
     await dbConnect();
     const entries = await EducationModel.find({}).sort({ endDate: -1 });
-    return entries;
-}
+    return JSON.parse(JSON.stringify(entries));
+});
 
-export async function getEducationById(id: string) {
+export const getEducationById = cache(async (id: string) => {
     await dbConnect();
     const entry = await EducationModel.findById(id);
-    return entry;
-}
+    return JSON.parse(JSON.stringify(entry));
+});
 
 export async function createEducation(educationData: IEducation) {
     await dbConnect();
