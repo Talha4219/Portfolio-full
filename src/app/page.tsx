@@ -71,8 +71,8 @@ export default async function Home() {
   return (
     <div className="container mx-auto px-4 py-12 md:py-20">
       {/* Hero Section */}
-      <section className="flex flex-col-reverse md:flex-row gap-12 items-center animate-fade-in-up">
-        <div className="text-center md:text-left">
+       <section className="flex flex-col-reverse md:flex-row gap-12 items-center animate-fade-in-up">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left flex-1 order-2 md:order-1">
             <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
               Hi, I am <span className="text-primary">{about?.name || 'Your Name'}</span>
             </h1>
@@ -105,20 +105,20 @@ export default async function Home() {
               </Button>
             </div>
         </div>
-        <div className="mt-8 md:mt-0">
+        <div className="mt-8 md:mt-0 flex-1 order-1 md:order-2">
             <Image
                 src={about?.heroImage || "https://placehold.co/600x600.png"}
                 alt="Hero Image"
                 width={600}
                 height={600}
-                className="rounded-lg object-cover shadow-2xl"
+                className="rounded-lg object-cover shadow-2xl mx-auto"
                 data-ai-hint="abstract geometric"
             />
         </div>
       </section>
 
       {/* Tech Stack Section */}
-      <section id="tech-stack" className="mt-16 md:mt-24">
+      <section id="skills" className="mt-16 md:mt-24 scroll-mt-20">
          <h2 className="font-headline text-3xl md:text-4xl font-bold text-center mb-8">
             My <span className="text-accent">Tech Stack</span>
         </h2>
@@ -181,7 +181,7 @@ export default async function Home() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="mt-16 md:mt-24">
+      <section id="experience" className="mt-16 md:mt-24 scroll-mt-20">
         <h2 className="font-headline text-3xl md:text-4xl font-bold text-center mb-12">
             Work <span className="text-primary">Experience</span>
         </h2>
@@ -228,7 +228,7 @@ export default async function Home() {
       </section>
 
       {/* Education Section */}
-      <section id="education" className="mt-16 md:mt-24">
+      <section id="education" className="mt-16 md:mt-24 scroll-mt-20">
         <h2 className="font-headline text-3xl md:text-4xl font-bold text-center mb-12">
             My <span className="text-primary">Education</span>
         </h2>
