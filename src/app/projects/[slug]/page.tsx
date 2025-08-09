@@ -97,5 +97,5 @@ export default async function ProjectDetailsPage({ params }: { params: { slug: s
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const project = await getProjectBySlug(params.slug);
   if (!project) return { title: 'Project Not Found' }
-  return { title: `${project.title} | LuminaFolio`, description: project.description }
+  return { title: `${project.title} | Talha Shams - Full Stack Developer`, description: project.description }
 }

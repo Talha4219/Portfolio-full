@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
@@ -5,7 +6,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: 'LuminaFolio',
+  title: 'Talha Shams - Full Stack Developer',
   description: 'A stunning, animated full-stack portfolio website.',
 };
 
