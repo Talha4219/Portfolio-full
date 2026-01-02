@@ -13,7 +13,7 @@ export const getEducationEntries = cache(async () => {
         return JSON.parse(JSON.stringify(entries));
     } catch (error) {
         console.error('Failed to fetch education entries:', error);
-        throw new Error('Failed to fetch education entries.');
+        return [];
     }
 });
 
