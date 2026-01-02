@@ -13,7 +13,7 @@ export const getAbout = unstable_cache(
             return JSON.parse(JSON.stringify(aboutInfo));
         } catch (error) {
             console.error('Failed to fetch about info:', error);
-            throw new Error('Failed to fetch about info.');
+            return null;
         }
     },
     ['about'],
