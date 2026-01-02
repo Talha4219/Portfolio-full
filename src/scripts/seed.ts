@@ -56,14 +56,18 @@ const seedDatabase = async () => {
 
     // 4. Seed Skills
     const skills = [
-      { name: 'React', category: 'frontend', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', level: 90 },
-      { name: 'Next.js', category: 'frontend', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', level: 85 },
-      { name: 'TypeScript', category: 'frontend', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', level: 80 },
-      { name: 'Node.js', category: 'backend', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', level: 85 },
-      { name: 'MongoDB', category: 'backend', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', level: 80 },
-      { name: 'PostgreSQL', category: 'backend', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', level: 70 },
-      { name: 'Docker', category: 'others', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', level: 75 },
-      { name: 'AWS', category: 'others', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg', level: 65 },
+      { name: 'React', category: 'frontend', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+      { name: 'Next.js', category: 'frontend', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
+      { name: 'TypeScript', category: 'frontend', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+      { name: 'Tailwind CSS', category: 'frontend', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg' },
+      { name: 'Redux', category: 'frontend', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg' },
+      { name: 'Node.js', category: 'backend', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+      { name: 'Express', category: 'backend', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
+      { name: 'MongoDB', category: 'backend', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+      { name: 'PostgreSQL', category: 'backend', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+      { name: 'Docker', category: 'others', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
+      { name: 'AWS', category: 'others', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg' },
+      { name: 'Git', category: 'others', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' }
     ];
     await Skill.insertMany(skills);
     console.log('Skills seeded.');
@@ -199,6 +203,76 @@ const seedDatabase = async () => {
         tags: ['MERN Stack', 'OpenAI', 'Google Maps API'],
         featured: false,
       },
+      {
+        title: 'DevPortfolio Pro',
+        slug: 'devportfolio-pro',
+        description: 'A dynamic developer portfolio generator with admin CMS, theme presets, and analytics.',
+        thumbnail: 'https://images.unsplash.com/photo-1526378722484-cc236f5cc1b6?q=80&w=800&h=500&auto=format&fit=crop',
+        images: [
+          'https://images.unsplash.com/photo-1526378722484-cc236f5cc1b6?q=80&w=800&h=500&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1517433456452-fb78e6f109b4?q=80&w=800&h=500&auto=format&fit=crop'
+        ],
+        body: 'DevPortfolio Pro lets developers quickly spin up a modern portfolio with project pages, blog posts, and integrated analytics.',
+        links: { github: 'https://github.com', live: 'https://example.com' },
+        tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'MongoDB'],
+        featured: false
+      },
+      {
+        title: 'HealthTrack App',
+        slug: 'healthtrack-app',
+        description: 'A health and fitness tracker with goals, workouts, and nutrition logging.',
+        thumbnail: 'https://images.unsplash.com/photo-1518314911310-0c29f91f3d8f?q=80&w=800&h=500&auto=format&fit=crop',
+        images: [
+          'https://images.unsplash.com/photo-1518314911310-0c29f91f3d8f?q=80&w=800&h=500&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1517836357463-d25dfeac1d1d?q=80&w=800&h=500&auto=format&fit=crop'
+        ],
+        body: 'HealthTrack focuses on daily habits and progress insights using charts and reminders.',
+        links: { github: 'https://github.com', live: 'https://example.com' },
+        tags: ['React', 'Redux', 'Node.js', 'Recharts'],
+        featured: false
+      },
+      {
+        title: 'FoodiesHub Ordering',
+        slug: 'foodieshub-ordering',
+        description: 'A multi-restaurant food ordering system with real-time order status and delivery tracking.',
+        thumbnail: 'https://images.unsplash.com/photo-1498654077810-12f27a5b0d4b?q=80&w=800&h=500&auto=format&fit=crop',
+        images: [
+          'https://images.unsplash.com/photo-1498654077810-12f27a5b0d4b?q=80&w=800&h=500&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1498654896293-37aacf113fd9?q=80&w=800&h=500&auto=format&fit=crop'
+        ],
+        body: 'FoodiesHub supports vendor dashboards, menus, coupons, and real-time delivery updates.',
+        links: { github: 'https://github.com', live: 'https://example.com' },
+        tags: ['Next.js', 'Socket.io', 'MongoDB', 'Tailwind CSS'],
+        featured: false
+      },
+      {
+        title: 'LearnMate LMS',
+        slug: 'learnmate-lms',
+        description: 'A learning management system with courses, quizzes, certificates, and payment integration.',
+        thumbnail: 'https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=800&h=500&auto=format&fit=crop',
+        images: [
+          'https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=800&h=500&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1513258490228-7b5f25a5a09a?q=80&w=800&h=500&auto=format&fit=crop'
+        ],
+        body: 'LearnMate enables creators to publish lessons, track learner progress, and issue certificates.',
+        links: { github: 'https://github.com', live: 'https://example.com' },
+        tags: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
+        featured: false
+      },
+      {
+        title: 'VisionAI Image Analyzer',
+        slug: 'visionai-image-analyzer',
+        description: 'An AI-powered image analyzer that detects objects, tags content, and provides insights.',
+        thumbnail: 'https://images.unsplash.com/photo-1543132220-3ec99c0b2cf6?q=80&w=800&h=500&auto=format&fit=crop',
+        images: [
+          'https://images.unsplash.com/photo-1543132220-3ec99c0b2cf6?q=80&w=800&h=500&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1518779579796-0b1c1f0f9cc0?q=80&w=800&h=500&auto=format&fit=crop'
+        ],
+        body: 'VisionAI analyzes images using cloud vision APIs and presents structured insights.',
+        links: { github: 'https://github.com', live: 'https://example.com' },
+        tags: ['Next.js', 'TypeScript', 'OpenAI', 'AWS'],
+        featured: false
+      }
     ];
     await Project.insertMany(projects);
     console.log('Projects seeded.');
