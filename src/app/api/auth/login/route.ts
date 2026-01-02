@@ -27,13 +27,17 @@ export async function POST(request: Request) {
     const isMatch = await user.matchPassword(password);
 
     if (!isMatch) {
+      console.log('Login failed: Password mismatch for email:', email);
       return NextResponse.json({ message: 'Invalid credentials' }, { status: 401 });
     }
 
     // Check if user is an admin
     if (user.role !== 'admin') {
+      console.log('Login failed: User is not admin:', email);
       return NextResponse.json({ message: 'Not authorized to access this route' }, { status: 403 });
     }
+
+    console.log('Login successful for:', email);
 
     // Create and sign the token
     const token = await new SignJWT({ userId: user._id, role: user.role })

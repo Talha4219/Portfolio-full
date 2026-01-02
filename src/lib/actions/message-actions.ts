@@ -13,32 +13,32 @@ export async function createMessage(messageData: Partial<IMessage>) {
 
     const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
     if (accessKey && accessKey !== 'YOUR_ACCESS_KEY_HERE') {
-      try {
-        await fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json',
-            },
-            body: JSON.stringify({
-                access_key: accessKey,
-                name: messageData.name,
-                email: messageData.email,
-                message: messageData.message,
-                from_name: "LuminaFolio Contact Form",
-                subject: "New Contact Form Submission"
-            }),
-        });
-      } catch (error) {
-          console.error("Failed to send message via Web3Forms", error);
-          // Do not rethrow, as we still want to save the message to our DB
-      }
+        try {
+            await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                },
+                body: JSON.stringify({
+                    access_key: accessKey,
+                    name: messageData.name,
+                    email: messageData.email,
+                    message: messageData.message,
+                    from_name: "LuminaFolio Contact Form",
+                    subject: "New Contact Form Submission"
+                }),
+            });
+        } catch (error) {
+            console.error("Failed to send message via Web3Forms", error);
+            // Do not rethrow, as we still want to save the message to our DB
+        }
     }
 }
 
 export const getMessages = cache(async () => {
     await dbConnect();
-    const messages = await MessageModel.find({}).sort({ createdAt: -1 });
+    const messages = await MessageModel.find({}).sort({ createdAt: -1 }).lean();
     return JSON.parse(JSON.stringify(messages));
 });
 

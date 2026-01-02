@@ -8,12 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Github, ExternalLink, ArrowLeft } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
-export async function generateStaticParams() {
-    const projects = await getProjects();
-    return projects.map((project) => ({
-      slug: project.slug,
-    }));
-}
+export const dynamic = 'force-dynamic';
 
 export default async function ProjectDetailsPage({ params }: { params: { slug: string } }) {
   const project = await getProjectBySlug(params.slug);

@@ -8,6 +8,7 @@ import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Loader2 } from 'lucide-react';
+import Link from 'next/link';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -41,7 +42,7 @@ export default function LoginPage() {
 
       // On successful login, the server sets a cookie, and we redirect.
       router.push('/admin');
-      
+
     } catch (err: any) {
       setError(err.message);
       toast({
@@ -76,6 +77,12 @@ export default function LoginPage() {
               {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
               Log In
             </Button>
+            <div className="mt-4 text-center text-sm">
+              Don&apos;t have an account?{' '}
+              <Link href="/admin/signup" className="underline underline-offset-4 hover:text-primary">
+                Sign up
+              </Link>
+            </div>
           </form>
         </CardContent>
       </Card>

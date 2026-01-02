@@ -11,13 +11,13 @@ interface UserJwtPayload {
 }
 
 async function verifyJwt(token: string): Promise<UserJwtPayload | null> {
-    try {
-        const { payload } = await jwtVerify(token, JWT_SECRET);
-        return payload as UserJwtPayload;
-    } catch (error) {
-        console.error("JWT Verification failed:", error);
-        return null;
-    }
+  try {
+    const { payload } = await jwtVerify(token, JWT_SECRET);
+    return payload as UserJwtPayload;
+  } catch (error) {
+    console.error("JWT Verification failed:", error);
+    return null;
+  }
 }
 
 export async function middleware(request: NextRequest) {
@@ -28,18 +28,21 @@ export async function middleware(request: NextRequest) {
   if (token) {
     payload = await verifyJwt(token);
   }
-  
+
   const isLoggedIn = !!payload;
   const isAdmin = payload?.role === 'admin';
 
 
-  // If user is logged in and tries to access login, redirect to admin dashboard
-  if (isLoggedIn && pathname.startsWith('/admin/login')) {
+  // If user is logged in and tries to access login or signup, redirect to admin dashboard
+  if (isLoggedIn && (pathname.startsWith('/admin/login') || pathname.startsWith('/admin/signup'))) {
     return NextResponse.redirect(new URL('/admin', request.url));
   }
 
+  // List of public admin routes
+  const isPublicAdminRoute = pathname === '/admin/login' || pathname === '/admin/signup';
+
   // If user is not an admin and tries to access a protected admin route, redirect to login
-  if (!isAdmin && pathname.startsWith('/admin') && pathname !== '/admin/login') {
+  if (!isAdmin && pathname.startsWith('/admin') && !isPublicAdminRoute) {
     return NextResponse.redirect(new URL('/admin/login', request.url));
   }
 
@@ -47,5 +50,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*', '/admin/login'],
+  matcher: ['/admin/:path*', '/admin/login', '/admin/signup'],
 };

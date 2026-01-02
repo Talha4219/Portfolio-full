@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { Menu, LayoutDashboard, Briefcase, GraduationCap, User, MessageSquare, LogOut, Home } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { useRouter } from 'next/navigation';
@@ -87,6 +87,7 @@ export default function AdminSidebar() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="p-0">
+              <SheetTitle className="sr-only">Admin Navigation Menu</SheetTitle>
               <div className="py-4 mb-2 border-b">
                 <Logo />
               </div>
