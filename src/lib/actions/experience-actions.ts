@@ -13,7 +13,7 @@ export const getExperienceEntries = cache(async () => {
         return JSON.parse(JSON.stringify(entries));
     } catch (error) {
         console.error('Failed to fetch experience entries:', error);
-        throw new Error('Failed to fetch experience entries.');
+        return [];
     }
 });
 
