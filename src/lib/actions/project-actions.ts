@@ -14,7 +14,7 @@ export const getProjects = cache(async () => {
         return JSON.parse(JSON.stringify(projects));
     } catch (error) {
         console.error('Failed to fetch projects:', error);
-        throw new Error('Failed to fetch projects.');
+        return [];
     }
 });
 

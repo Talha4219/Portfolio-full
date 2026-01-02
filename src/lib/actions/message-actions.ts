@@ -37,9 +37,14 @@ export async function createMessage(messageData: Partial<IMessage>) {
 }
 
 export const getMessages = cache(async () => {
-    await dbConnect();
-    const messages = await MessageModel.find({}).sort({ createdAt: -1 }).lean();
-    return JSON.parse(JSON.stringify(messages));
+    try {
+        await dbConnect();
+        const messages = await MessageModel.find({}).sort({ createdAt: -1 }).lean();
+        return JSON.parse(JSON.stringify(messages));
+    } catch (error) {
+        console.error('Failed to fetch messages:', error);
+        return [];
+    }
 });
 
 export async function updateMessageStatus(id: string, read: boolean) {

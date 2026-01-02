@@ -14,7 +14,7 @@ export const getSkills = cache(async () => {
         return JSON.parse(JSON.stringify(skills));
     } catch (error) {
         console.error('Failed to fetch skills:', error);
-        throw new Error('Failed to fetch skills.');
+        return [];
     }
 });
 
