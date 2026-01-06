@@ -110,8 +110,8 @@ export default async function Home() {
         <ScaleIn className="flex-1 w-full max-w-sm md:max-w-none mb-8 md:mb-0" delay={0.2}>
             <div className="relative aspect-square md:aspect-auto">
                 <Image
-                    src="/Talha.png"
-                    alt="Hero Image"
+                    src="/dp-bg (1).png"
+                    alt="Hero Image" 
                     width={600}
                     height={600}
                     className="rounded-lg object-cover shadow-2xl mx-auto w-full h-auto"
