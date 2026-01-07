@@ -59,21 +59,21 @@ export default function ContactForm() {
       });
       form.reset();
     } catch (error) {
-       console.error('Failed to send message:', error);
-       toast({
+      console.error('Failed to send message:', error);
+      toast({
         variant: 'destructive',
         title: 'Oh no! Something went wrong.',
         description: 'There was a problem sending your message. Please try again later.',
       });
     }
     finally {
-        setIsSubmitting(false);
+      setIsSubmitting(false);
     }
   }
 
   return (
-    <Card className="border-border/60">
-      <CardContent className="p-6">
+    <Card className="bg-card/40 backdrop-blur-md border border-white/10 shadow-2xl">
+      <CardContent className="p-8">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <FormField
@@ -81,9 +81,9 @@ export default function ContactForm() {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your Name" {...field} />
+                    <Input placeholder="Your Name" className="bg-white/5 border-white/10 h-12 focus:border-primary/50 transition-all" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -94,9 +94,9 @@ export default function ContactForm() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="your.email@example.com" {...field} />
+                    <Input placeholder="your.email@example.com" className="bg-white/5 border-white/10 h-12 focus:border-primary/50 transition-all" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -107,19 +107,19 @@ export default function ContactForm() {
               name="message"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Message</FormLabel>
+                  <FormLabel className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Message</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="Tell me about your project or just say hi!" className="min-h-[150px]" {...field} />
+                    <Textarea placeholder="Tell me about your project or just say hi!" className="min-h-[150px] bg-white/5 border-white/10 focus:border-primary/50 transition-all resize-none" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit" size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" disabled={isSubmitting}>
+            <Button type="submit" size="lg" className="w-full h-14 text-lg font-bold shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all" disabled={isSubmitting}>
               {isSubmitting ? (
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
               ) : (
-                <Send className="mr-2 h-4 w-4" />
+                <Send className="mr-2 h-5 w-5" />
               )}
               Send Message
             </Button>
